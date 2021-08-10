@@ -47,14 +47,17 @@ namespace WebsiteBanHang.Controllers
             return TongTien;
         }
         
-        public ActionResult ThongKeThang(FormCollection f)
+        [HttpGet]
+        public JsonResult ThongKeThang(string txtThang, string txtNam)
         {
-            int Thang = Convert.ToInt32(f["txtThang"].ToString());
-            int Nam = Convert.ToInt32(f["txtNam"].ToString());
+            int Thang = Convert.ToInt32(txtThang);
+            int Nam = Convert.ToInt32(txtNam);
             int? tongtien = ThongKeDoanhThuTheoThang(Thang, Nam);
-           
-            
-            return Content(tongtien.ToString());
+            return Json(new
+            {
+                tongtien=tongtien
+            },
+            JsonRequestBehavior.AllowGet);
         }
         public int TongThanhVien()
         {   

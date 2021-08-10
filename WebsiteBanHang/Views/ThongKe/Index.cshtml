@@ -20,19 +20,35 @@
 
 <h2>Tổng doanh thu tháng 5/2021: <font color="red">@ViewBag.TongDoanhThuTheoThang.ToString("#,##") VNĐ</font></h2>
 <br />
-@using (Ajax.BeginForm("ThongKeThang", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "ThongKe", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
-{
-<div class="row">
-    <div class="col">
-        <input class="form-control" type="text" name="txtThang" placeholder="Nhập tháng" />
+    <div class="row">
+        <div class="col">
+            <input class="form-control" type="text" id="txtThang" placeholder="Nhập tháng" />
+        </div>
+        <div class="col">
+            <input class="form-control" type="text" id="txtNam" placeholder="Nhập năm" />
+        </div>
+        <div class="col">
+            <button id="XacNhan" class="btn btn-primary">Thống kê</button>
+        </div>
     </div>
-    <div class="col">
-        <input class="form-control" type="text" name="txtNam" placeholder="Nhập năm" />
-    </div>
-    <div class="col">
-        <input id="XacNhan" type="submit" value="Thống kê" class="btn btn-primary" />
-    </div>
-</div>
-}
-<h2 id="ThongKe">Tổng doanh thu: <font color="red"></font>VNĐ</h2>
+<h2 id="ThongKe">Tổng doanh thu: <span id="money1" style="color: red;"></span>&nbsp;VNĐ</h2>
+<script>
+    $(document).ready(() => {
+        $("#XacNhan").click(() => {
+            let txtThang = $("#txtThang").val();
+            let txtNam = $("#txtNam").val();
+            $.ajax({
+                type: "GET",
+                url: `ThongKe/ThongKeThang?txtThang=${txtThang}&txtNam=${txtNam}`,
+                success: function (res) {
+                    var mn = document.getElementById("money1");
+                    mn.innerText = res.tongtien;
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            });
+        });
+    });
+</script>
 
