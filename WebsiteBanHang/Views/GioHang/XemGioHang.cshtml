@@ -1,0 +1,48 @@
+﻿@using WebsiteBanHang.Models;
+
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@if (Model == null||Model.Count==0) { 
+    <h1>Giỏ hàng rỗng</h1>
+}
+else
+            {
+                <table class="table">
+                    <tr>
+                        <td>Mã SP</td>
+                        <td>Tên SP</td>
+                        <td>Hình ảnh</td>
+                        <td>Số lượng</td>
+                        <td>Đơn Giá</td>
+                        <td>Thành tiền</td>
+                        
+                    </tr>
+                    @foreach(var item in Model)
+                    {<tr>
+                        <td>@item.MaSP</td>
+                        <td>@item.TenSP</td>
+                        <td><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)"width="50" height="50"</td>
+                        <td>@item.SoLuong</td>
+                        <td>@item.DonGia.ToString("#,##")</td>
+                        <td>@item.ThanhTien.ToString("#,##")</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })
+                            @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+                                            </td>
+                    </tr>
+
+                     }
+                </table>
+                <div class="divDatHang" style="text-align:right;padding-right:50px;">
+                    @using (Html.BeginForm("DatHang", "GioHang"))
+                    {
+                        <input type="submit" value="Đặt hàng" class="btn btn-danger" />
+                        @Html.ActionLink("Mua tiếp","Index","Home")
+
+                    }
+                </div>
+            }

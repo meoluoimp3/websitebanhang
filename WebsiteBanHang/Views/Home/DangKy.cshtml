@@ -1,0 +1,97 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
+@using WebsiteBanHang.Models;
+@model user
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="container register" style="        margin-top: 50px;
+        background: -webkit-linear-gradient(left, #6b6961, #edeade);
+    ">
+    <div class="col-md-4 register-left" style=" text-align: center; color: #fff; margin-top: 4%;">
+        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+        <h3 style="margin-top:20px;">Chào mừng</h3>
+        <p style="font-weight: lighter; padding: 12%; margin-top: -9%;">bạn đến với TXCBrand</p>
+        <button onclick="openForm()" id="btnDangNhap" style=" border: none; border-radius: 1.5rem; padding: 2%; width: 60%; background: #f8f9fa; font-weight: bold; color: #383d41; margin-top: 30%; margin-bottom: 3%; cursor: pointer;">Đăng nhập</button><br />
+    </div> 
+      
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h1 style="margin-top:30px;">Đăng kí thành viên</h1>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="col-md-4 register-top-grid">
+    <h3 style="align-content:center;">Thông tin cá nhân</h3>
+    <br />
+    <div>
+        <span>Họ tên</span><br />
+        @Html.TextBoxFor(model => model.name,new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.name)
+    </div>
+    <div>
+        <span>Địa chỉ</span><br />
+        @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.address)
+    </div>
+    <div>
+        <span>Email</span><br />
+        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.email)
+
+    </div>
+    <div>
+        <span>Số điện thoại</span><br />
+        @Html.TextBoxFor(model => model.phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.phone)
+
+    </div>
+</div>
+            <div class="col-md-4 register-bottom-grid">
+                <h3>Thông tin đăng nhập</h3><br />
+                <div>
+                    <span style="padding-top: 10px; padding-bottom: 5px;">Tên đăng nhập</span><br />
+                    @Html.TextBoxFor(model => model.username, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.username)
+
+                </div>
+                <div>
+                    <span style="padding-top: 10px; padding-bottom: 5px;">Mật khẩu</span><br />
+                    @Html.PasswordFor(model => model.password, new { @id = "matkhau" , @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.password)
+
+                </div>
+                <div>
+                    <span style="padding-top: 10px; padding-bottom: 5px;">Nhập lại mật khẩu</span><br />
+                    @Html.PasswordFor(model => model.password, new { @id = "xacnhanmatkhau" ,@class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.password)
+                    <p id="TB_matkhau"></p>
+                </div>
+
+
+                <div>
+                    @Html.MathCaptcha()
+                </div>
+                <div>
+                    <h5 style="color:black;">@ViewBag.ThongBao</h5>
+                </div><br />
+                <input type="submit" value="Xác nhận" id="btnDangKy" style="border: none; border-radius: 1.5rem; padding: 2%; width: 60%; background: #f8f9fa; font-weight: bold; color: #383d41; margin-top: 3%; margin-bottom: 10%; cursor: pointer;">
+            </div>
+            <div class="clearfix"> </div>
+            
+        }
+
+    </div>
+
+</div>
+<script>
+    $("#btnDangKy").click(function () {
+        if ($("#matkhau").val() != $("#xacnhanmatkhau").val()) {
+            $("#TB_matkhau").text("mật khẩu không trùng nhau");
+            return false;
+        }
+    })
+</script>
+

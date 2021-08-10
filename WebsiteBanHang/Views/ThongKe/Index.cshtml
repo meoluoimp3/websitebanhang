@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusing-ajax.js"></script>
+
+<h1>Thống kê</h1>
+<br />
+
+<h2>Tổng doanh thu: <font color="red">@ViewBag.TongDoanhThu.ToString("#,##") VNĐ</font></h2>
+<br />
+
+<h2>Tổng số lượng đơn đặt hàng: <font color="red">@ViewBag.TongDDH (đơn)</font></h2>
+<br />
+
+<h2>Tổng số lượng thành viên: <font color="red">@ViewBag.TongThanhVien (thành viên)</font></h2>
+<br />
+
+<h2>Tổng doanh thu tháng 5/2021: <font color="red">@ViewBag.TongDoanhThuTheoThang.ToString("#,##") VNĐ</font></h2>
+<br />
+@using (Ajax.BeginForm("ThongKeThang", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "ThongKe", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
+{
+<div class="row">
+    <div class="col">
+        <input class="form-control" type="text" name="txtThang" placeholder="Nhập tháng" />
+    </div>
+    <div class="col">
+        <input class="form-control" type="text" name="txtNam" placeholder="Nhập năm" />
+    </div>
+    <div class="col">
+        <input id="XacNhan" type="submit" value="Thống kê" class="btn btn-primary" />
+    </div>
+</div>
+}
+<h2 id="ThongKe">Tổng doanh thu: <font color="red"></font>VNĐ</h2>
+

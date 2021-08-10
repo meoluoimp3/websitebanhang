@@ -1,0 +1,91 @@
+﻿
+
+
+
+@using WebsiteBanHang.Models;
+
+@model IEnumerable<Bill>
+@{
+    ViewBag.Title = "DaHoanThanh";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+<div class="container">
+    @Html.Partial("~/Views/Layout/DanhMucDonHang.cshtml")
+
+    <div class="col-md-9">
+
+        <br />
+        <h2>Đơn hàng đã hoàn thành</h2>
+        <br />
+
+        @grid.GetHtml(
+            tableStyle: "divTable",
+            headerStyle: "gridHead",
+            footerStyle: "gridFooter",
+            rowStyle: "gridRow",
+            alternatingRowStyle: "gridAltRow",
+            columns: grid.Columns(
+                    grid.Column("Id", header: "Mã đơn hàng"),
+
+                    grid.Column("buy_date", header: "Ngày đặt"),
+                    grid.Column("price_total", header: "Tiền hàng"),
+
+                    grid.Column(format: p => @Html.ActionLink("Xem đơn hàng", "XemDonHangHoanThanh", new { id = p.Id }))
+
+                ))
+    </div>
+</div>
+
+@*Css cho controller*@
+<style>
+
+    .nav > li {
+        background: rgba(0,0,0,.5);
+        padding: 5px 10px 5px 10px;
+    }
+
+    .divTable {
+        width: 100%;
+        height: 20%;
+        border: 1px solid #999999;
+        padding: 5px 10px 5px 10px;
+    }
+        
+
+
+        .divTable td {
+            border: 1px solid #999999;
+            padding: 5px 10px 5px 10px;
+        }
+            .divTable td:hover {
+                background: #FE9A2E;
+            }
+    .gridHead {
+        background-color: #5b5a53;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+            padding: 5px 10px 5px 10px;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .divTable a {
+        color: blue;
+        padding: 5px 10px 5px 10px;
+    }
+    /*.gridRow {
+                color:#fff;
+                background-color:blueviolet;
+            }
+            .gridAltRow {
+                color:#fff;
+                background-color:darkorange;
+            }*/
+</style>

@@ -1,0 +1,118 @@
+﻿@model WebsiteBanHang.Models.product
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Xóa sản phẩm</h2>
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">Tên sản phẩm</label>
+            @*@Html.DisplayNameFor(model => model.name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Giá sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Miêu tả sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Hình ảnh sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image1)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Hình ảnh sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image2)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.image3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image4)
+        </dd>*@
+
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.sale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sale)
+        </dd>*@
+
+        <dt>
+            <label class="control-label col-md-2">Số lượng sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Sản phẩm mới</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.@new)
+        </dd>
+
+
+
+        <dt>
+            <label class="control-label col-md-2">Danh mục sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categories_id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

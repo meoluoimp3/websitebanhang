@@ -1,0 +1,88 @@
+﻿@using WebsiteBanHang.Models;
+
+@model IEnumerable<Bill>
+
+@{
+    ViewBag.Title = "ChuaThanhToan";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+
+<br />
+<h2>Danh sách đơn hàng chưa xác nhận</h2>
+<br />
+
+<br />
+@grid.GetHtml(
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+            grid.Column("Id", header: "Mã đơn hàng"),
+            grid.Column("buyer_id", header: "Họ tên KH", format: p => p.buyer_id != null ? p.user.name : ""),
+            grid.Column("buy_date", header: "Ngày đặt"),
+            grid.Column("status", header: "Xác nhận"),
+            grid.Column(format: p => @Html.ActionLink("in đơn hàng", "InDonHang", new { id = p.Id }, new { @target = "_blank" })),
+            //grid.Column("discount_percent", header: "Ưu đãi"),
+            //grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.Id }, new { @target = "_blank" })),
+            grid.Column(format: p => @Html.ActionLink("xác nhận", "xacnhan", new { id = p.Id }, new { @target = "_blank" }))
+        ))
+
+
+@*Css cho controller*@
+<style>
+
+    .nav > li {
+        background: rgba(0,0,0,.5);
+        padding: 5px 10px 5px 10px;
+    }
+
+    .divTable {
+        width: 100%;
+        height: 20%;
+        border: 1px solid #999999;
+        padding: 5px 10px 5px 10px;
+    }
+
+
+
+        .divTable td {
+            border: 1px solid #999999;
+            padding: 5px 10px 5px 10px;
+        }
+
+            .divTable td:hover {
+                background: #FE9A2E;
+            }
+
+    .gridHead {
+        background-color: #5b5a53;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+            padding: 5px 10px 5px 10px;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .divTable a {
+        color: blue;
+        padding: 5px 10px 5px 10px;
+    }
+    /*.gridRow {
+                color:#fff;
+                background-color:blueviolet;
+            }
+            .gridAltRow {
+                color:#fff;
+                background-color:darkorange;
+            }*/
+</style>

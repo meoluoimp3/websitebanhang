@@ -1,0 +1,67 @@
+﻿@using WebsiteBanHang.Models;
+@model Bill
+
+@{
+    ViewBag.Title = "DuyetDonHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+
+<h2>Thông tin đơn hàng </h2>
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <div class="ChiTietDonHang table">
+        @{ IEnumerable<billproduct> lstChiTietDH = (IEnumerable<billproduct>)ViewBag.ListChiTietDH;}
+
+        <table class="table" id="table">
+            @*Thông tin đơn hàng*@
+            <tr>
+                <td>Mã đơn hàng: <b style="color:red">@Model.Id @Html.Hidden("Id", Model.Id)</b></td>
+                <td>Mã khách hàng: <b style="color:red">@Model.user.Id</b></td>
+                <td>Tên khách hàng: <b style="color:red">@Model.user.name</b></td>
+                <td>Ngày đặt: @Model.buy_date.Value.ToString("dd/MM/yyy")</td>
+                <td>Đã xác nhận: @Html.EditorFor(model => model.status)</td>
+                <td>Đã giao: @Html.EditorFor(model => model.transport_status)</td>
+                <td>Đã thanh toán: @Html.EditorFor(model => model.buy_status)</td>
+            </tr>
+            @*Phần chi tiết đơn hàng*@
+            <tr>
+                <td></td>
+                <td><b>Sản phẩm</b></td>
+                <td><b>Hình ảnh</b></td>
+                <td><b>Số lượng đặt</b></td>
+                <td><b>Đơn giá đặt</b></td>
+            </tr>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in lstChiTietDH)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.product.name</td>
+                    <td><img width="120" height="120" src="@Url.Content("~/Content/HinhAnhSP/" + @item.product.image1)" /></td>
+                    <td>@item.quantity</td>
+                    <td>@item.unit_price</td>
+                </tr>
+                { i++; }
+            }
+
+
+            <tr id="tt">
+                <td>Tổng số lượng: @Model.billproducts.Sum(n => n.quantity)</td>
+                <td>Tổng tiền: @Model.billproducts.Sum(n => n.unit_price * n.quantity).Value.ToString("#,##") đồng</td>
+            </tr>
+        </table>
+        <br /><br />
+
+        <input type="submit" value="Lưu đơn hàng" id="btnLuuDonHang" class="btn btn-danger" />
+        
+    </div>
+}
+
+

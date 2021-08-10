@@ -1,0 +1,158 @@
+﻿@model WebsiteBanHang.Models.product
+
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@*<script src="https://cdn.tiny.cloud/1/vadmmqdz0eb6yrhyivk3ms1v1v46uewhgzu88wpk425m774r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>*@
+<h2>Sửa sản phẩm</h2>
+
+@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.Hidden("Id", Model.Id)
+    <div class="form-group">
+        <label class = "control-label col-md-2" >Tên sản phẩm</label>
+        @*@Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Giá sản phẩm</label>
+        @*@Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Số lượng sản phẩm</label>
+        @*Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Miêu tả sản phẩm</label>
+        @*@Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            <textarea name="description">@Model.description </textarea>
+
+            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh sản phẩm</label>
+        @*@Html.LabelFor(model => model.image1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.image1, new { htmlAttributes = new { @class = "form-control" } })
+        <input name="image1" type="file" />
+
+        <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.image1)" style="width:250px;height:150px" />
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh sản phẩm</label>
+        @*@Html.LabelFor(model => model.image2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.image2, new { htmlAttributes = new { @class = "form-control" } })
+        <input name="image2" type="file" />
+
+        <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.image2)" style="width:250px;height:150px" />
+    </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.image3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input name="image1" type="file" />
+
+            <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.image3)" style="width:250px;height:150px" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.image4, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input name="image1" type="file" />
+
+            <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.image4)" style="width:250px;height:150px" />
+        </div>
+    </div>*@
+
+
+
+
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.sale, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sale, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sale, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+
+<div class="form-group">
+    <label class="control-label col-md-2">sản phẩm mới</label>
+    @*@Html.LabelFor(model => model.@new, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.@new, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.@new, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+
+<div class="form-group">
+    <label class="control-label col-md-2">Danh mục sản phẩm</label>
+    @*@Html.LabelFor(model => model.categories_id, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <div class="col-md-10">
+        @{
+            WebsiteBanHang.Models.QuanLyBanHang6Entities db = new WebsiteBanHang.Models.QuanLyBanHang6Entities();
+            var danhmuc = db.Categories.ToList();
+            <select name="categories_id">
+                @foreach (var item in danhmuc)
+                {
+                    <option value="@item.Id">@item.name</option>
+                }
+            </select>
+        }
+        @*@Html.DropDownList("LoaiSP", null, new { htmlAttributes = new { @class = "form-control" } })*@
+        @Html.ValidationMessageFor(model => model.categories_id, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <button class="btn btn-dark"> @Html.ActionLink("Trở về", "Index")</button>
+</div>

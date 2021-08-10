@@ -1,0 +1,142 @@
+﻿
+@using WebsiteBanHang.Models;
+@model IEnumerable<product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="banner-w3">
+    <div class="demo-1">
+        <div id="example1" class="core-slider core-slider__carousel example_1">
+            <div class="core-slider_viewport">
+                <div class="core-slider_list">
+                    <div class="core-slider_item">
+                        <img src="~/Content/images/b1.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Content/images/b2.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Content/images/b3.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Content/images/b4.jpg" class="img-responsive" alt="">
+                    </div>
+                </div>
+            </div>
+            @*<div class="core-slider_nav">
+                <div class="core-slider_arrow core-slider_arrow__right"></div>
+                <div class="core-slider_arrow core-slider_arrow__left"></div>
+            </div>*@
+            <div class="core-slider_control-nav"></div>
+        </div>
+    </div>
+    <link href="~/Content/css/coreSlider.css" rel="stylesheet" type="text/css">
+    <script src="~/Content/js/coreSlider.js"></script>
+    <script>
+        $('#example1').coreSlider({
+            pauseOnHover: false,
+            interval: 3000,
+            controlNavEnabled: true
+        });
+
+    </script>
+
+</div>
+@{ 
+    IEnumerable<product> lstSPM = ViewBag.lstSPM as IEnumerable<product>;
+}
+<div class="new-arrivals-w3agile">
+    <div class="container">
+        <h2 class="tittle">sản phẩm mới</h2>
+        @Html.Partial("~/Views/Product/ProductStylePartial.cshtml", lstSPM)
+    </div>
+</div>
+<div class="accessories-w3l">
+    <div class="container">
+        <h3 class="tittle">Sản phẩm hot</h3>
+        <span>Mua sắm ngay</span>
+        <div class="button">
+            <a href="@Url.Action("Product","Product")" class="button1"> Mua ngay</a>
+            
+        </div>
+    </div>
+</div>
+<div class="latest-w3">
+    <div class="container">
+        <h3 class="tittle1"></h3>
+        <div class="latest-grids">
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l1.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Men</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-50%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l2.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Shoes</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-20%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l3.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Women</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-50%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="latest-grids">
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l4.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Watch</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-45%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l5.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Bag</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-10%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 latest-grid">
+                <div class="latest-top">
+                    <img src="images/l6.jpg" class="img-responsive" alt="">
+                    <div class="latest-text">
+                        <h4>Cameras</h4>
+                    </div>
+                    <div class="latest-text2 hvr-sweep-to-top">
+                        <h4>-30%</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

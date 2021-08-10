@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba0aea61280c4dcfbb23555e089f822b" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.Bill" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.billproduct" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Category" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.comment" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.infobill" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.product" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Role" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.user_role" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.user" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK_billproduct_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_infobill_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Table_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_billproduct_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_product_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_comment_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_comment_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_user_role_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_user_role_ToTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
