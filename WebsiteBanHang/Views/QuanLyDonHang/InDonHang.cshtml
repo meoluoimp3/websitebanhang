@@ -12,11 +12,13 @@
             @*Thông tin đơn hàng*@
             <tr>
                 @*<td>Mã đơn hàng: <b style="color:red">@Model.Id @Html.Hidden("Id", Model.Id)</b></td>*@
-                
+
                 <td>Tên khách hàng: <b style="color:red">@Model.user.name</b></td>
-                <td>Ngày đặt: @Model.buy_date.Value.ToString("dd/MM/yyy")</td>
+                <td>SĐT:@Model.user.phone</td>
+                @*<td>Ngày đặt: @Model.buy_date.Value.ToString("dd/MM/yyy")</td>*@
                 <td>Địa chỉ: @Model.user.address</td>
-                
+
+
             </tr>
             @*Phần chi tiết đơn hàng*@
             <tr>

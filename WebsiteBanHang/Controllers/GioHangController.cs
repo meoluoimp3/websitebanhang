@@ -120,16 +120,19 @@ namespace WebsiteBanHang.Controllers
                                select sl;
             int? slban = 0;
             slban += productcheck.Sum(n => n.quantity);
-            
-            if (spCheck.quantity-slban < itemGH.SoLuong)
+
+            if (spCheck.quantity - slban < itemGH.SoLuong)
             {
                 return View("ThongBao");
             }
-            List<ItemGioHang> lstGH = LayGioHang();
-            ItemGioHang itemGHUpdate = lstGH.Find(n => n.MaSP == itemGH.MaSP);
-            itemGHUpdate.SoLuong = itemGH.SoLuong;
-            itemGHUpdate.ThanhTien = itemGHUpdate.SoLuong * itemGHUpdate.DonGia;
-            return RedirectToAction("XemGioHang");
+            else
+            {
+                List<ItemGioHang> lstGH = LayGioHang();
+                ItemGioHang itemGHUpdate = lstGH.Find(n => n.MaSP == itemGH.MaSP);
+                itemGHUpdate.SoLuong = itemGH.SoLuong;
+                itemGHUpdate.ThanhTien = itemGHUpdate.SoLuong * itemGHUpdate.DonGia;
+                return RedirectToAction("XemGioHang");
+            }
         }
         public ActionResult XoaGioHang(int MaSP)
         {

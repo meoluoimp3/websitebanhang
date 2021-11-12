@@ -186,14 +186,16 @@
 
                                                 @{ IEnumerable<comment> lstBinhLuan = (IEnumerable<comment>)ViewBag.LstBinhLuan;
 
-}
-                                                @foreach (var item in lstBinhLuan) {
-                                                <ul>
-                                                    <li ><h4>@item.user.name</h4></li>
-                                                    <li>@item.comment_date</li>
+                                                }
+                                                @foreach (var item in lstBinhLuan)
+                                                {
+                                                    <ul>
+                                                        <li><h4>@item.user.name</h4></li>
 
-                                                </ul>
-                                                <p>@item.comment1</p>
+
+                                                    </ul>
+                                                    <p>@item.comment_date</p>
+                                                    <p>@item.comment1</p>
                                                 }
                                                 <div class="clearfix"></div>
                                             </div>
